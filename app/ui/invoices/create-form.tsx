@@ -129,18 +129,21 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
             state.errors.status.map((error: string) => (
               <p className="mt-2 text-sm text-red-500" key={error}>
                 {error}
+                Missing Fields. Failed To Create Invoice. 
               </p>
             ))}
+              {/* <p className="mt-2 text-sm text-red-500" >
+              </p> */}
         </div>
-        {/* FIX THIS */}
-        <div id="invoice-error" aria-live="polite" aria-atomic="true">
+        {/* <div id="invoice-error" aria-live="polite" aria-atomic="true">
           {state.errors &&
             state.errors.map((error: string) => (
               <p className="mt-2 text-sm text-red-500" key={error}>
                 {error}
+                Missing Fields. Failed To Create Invoice. 
               </p>
             ))}
-        </div>
+        </div> */}
         
       </div>
       <div className="mt-6 flex justify-end gap-4">
