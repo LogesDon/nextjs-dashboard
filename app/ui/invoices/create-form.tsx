@@ -15,7 +15,7 @@ import { Button } from '@/app/ui/button';
 export default function Form({ customers }: { customers: CustomerField[] }) {
   const initialState: State = { message: null, errors: {} };
   const [state, formAction] = useActionState(createInvoice, initialState);
-// woah look i did something
+  
   return (
     <form action={formAction}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
@@ -78,6 +78,7 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                   </p>
                 ))}
             </div>
+            
           </div>
         </div>
 
@@ -121,7 +122,6 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
                 </label>
               </div>
             </div>
-            {/* Pretty sure the aria labels for invoice status errors goes here */}
           </div>
         </fieldset>
         <div id="invoice-error" aria-live="polite" aria-atomic="true">
@@ -129,21 +129,17 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
             state.errors.status.map((error: string) => (
               <p className="mt-2 text-sm text-red-500" key={error}>
                 {error}
-                Missing Fields. Failed To Create Invoice. 
+                {state.message}
               </p>
             ))}
-              {/* <p className="mt-2 text-sm text-red-500" >
-              </p> */}
         </div>
-        {/* <div id="invoice-error" aria-live="polite" aria-atomic="true">
-          {state.errors &&
-            state.errors.map((error: string) => (
-              <p className="mt-2 text-sm text-red-500" key={error}>
-                {error}
-                Missing Fields. Failed To Create Invoice. 
-              </p>
-            ))}
-        </div> */}
+        <div id="form-errors" aria-live="polite" aria-atomic="true">
+          {state.message && (
+            <p className="mt-2 text-sm text-red-500 key={state.message}">
+              {state.message}
+            </p>
+          )}
+        </div>
         
       </div>
       <div className="mt-6 flex justify-end gap-4">
